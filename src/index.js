@@ -6,7 +6,7 @@ import { gameRoutes } from './routes/game.js'
 import { orderRoutes } from './routes/order.js'
 
 const app = express()
-const PORT = 3000
+const PORT =  process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json({ limit: '1mb' }))
