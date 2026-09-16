@@ -9,7 +9,8 @@ const app = express()
 const PORT =  process.env.PORT || 3000
 
 const ALLOWED_ORIGINS = [
-  'https://WXJ1234943.github.io',
+  'https://gamehubdome-production.up.railway.app',
+  // 'https://WXJ1234943.github.io',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ]
