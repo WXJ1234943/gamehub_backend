@@ -8,7 +8,20 @@ import { orderRoutes } from './routes/order.js'
 const app = express()
 const PORT =  process.env.PORT || 3000
 
-app.use(cors())
+const ALLOWED_ORIGINS = [
+  'https://WXJ1234943.github.io',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+]
+app.use(cors({
+  origin: (origin, cb) => {
+    if (!origin || ALLOWED_ORIGINS.includes(origin)) return cb(null, true)
+    return cb(new Error(`CORS blocked: ${origin}`))
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}))
 app.use(express.json({ limit: '1mb' }))
 
 app.use((req, res, next) => {
